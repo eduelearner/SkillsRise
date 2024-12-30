@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Category Detail</title>
+{% endblock %}
+
+{% block content %}
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header position-relative">
+    <div class="w-100 h-100 position-absolute top-0 start-0">
+      <img class="w-100 h-100" src="{{ category.image.url }}" alt="" style="object-fit: cover; filter: brightness(0.5) blur(5px);z-index: -1;" />
+    </div>
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <div>
+            <h1 class="display-3 text-white animated slideInDown">{{ category.name }}</h1>
+            <h2>{{ category.description }}</h2>
+          </div>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <a class="text-white" href="{% static '#' %}">Home</a>
+              </li>
+              <li aria-current="page" class="breadcrumb-item text-white active">Category Detail</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <div class="container-xxl py-5">
+    <div class="row g-4">
+      <div class="col-lg-8 col-md-12 wow fadeInUp" data-wow-delay="0.3s">
+        <h4 class="mb-3">Courses</h4>
+        <div class="row g-4">
+          {% for course in category.courses.all %}
+              <div class="col-lg-4 col-md-6" onclick="window.location.href='{% url 'courses:course_detail' course.id %}';" style="cursor: pointer;">
+                <div class="position-relative overflow-hidden">
+                  <img class="img-fluid" src="{{ course.image.url }}" alt="" />
+                  <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+                    <h5 class="m-0">{{ course.name }}</h5>
+                    <small class="text-primary">{{ course.category.name }}</small>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
