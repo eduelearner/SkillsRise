@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.shortcuts import redirect, render
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from courses.models import Course
 from django.db.models import Count
@@ -45,6 +47,15 @@ def register(request):
 
         if password != password_confirm:
             messages.error(request, "Passwords do not match")
+
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            # If validation fails, 'e' will contain a list of error messages
+            for error in e:
+                messages.error(request, error)
+            return redirect("core:register")
+
         else:
             user = User.objects.filter(username=username).first()
             if user:

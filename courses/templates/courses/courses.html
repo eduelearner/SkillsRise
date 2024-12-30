@@ -5,6 +5,13 @@
   <title>Courses</title>
 {% endblock %}
 
+{% block nav_links %}
+  <a href="{% url 'core:home' %}" class="nav-item nav-link">Home</a>
+  <a href="{% url 'core:about' %}" class="nav-item nav-link">About</a>
+  <a href="{% url 'courses:courses' %}" class="nav-item nav-link active">Courses</a>
+  <a href="{% url 'core:contact' %}" class="nav-item nav-link">Contact</a>
+{% endblock %}
+
 {% block content %}
   <!-- Header Start -->
   <div class="container-fluid bg-primary py-5 mb-5 page-header">
@@ -15,10 +22,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
               <li class="breadcrumb-item">
-                <a class="text-white" href="{% static '#' %}">Home</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a class="text-white" href="{% static '#' %}">Pages</a>
+                <a class="text-white" href="{% url 'core:home' %}">Home</a>
               </li>
               <li aria-current="page" class="breadcrumb-item text-white active">Courses</li>
             </ol>

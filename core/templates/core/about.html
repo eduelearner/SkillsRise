@@ -5,6 +5,13 @@
   <title>About Us</title>
 {% endblock %}
 
+{% block nav_links %}
+  <a href="{% url 'core:home' %}" class="nav-item nav-link">Home</a>
+  <a href="{% url 'core:about' %}" class="nav-item nav-link active">About</a>
+  <a href="{% url 'courses:courses' %}" class="nav-item nav-link">Courses</a>
+  <a href="{% url 'core:contact' %}" class="nav-item nav-link">Contact</a>
+{% endblock nav_links %}
+
 {% block content %}
   <!-- Header Start -->
   <div class="container-fluid bg-primary py-5 mb-5 page-header">
@@ -15,10 +22,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
               <li class="breadcrumb-item">
-                <a class="text-white" href="{% static '#' %}">Home</a>
-              </li>
-              <li class="breadcrumb-item">
-                <a class="text-white" href="{% static '#' %}">Pages</a>
+                <a class="text-white" href="{% url 'core:home' %}">Home</a>
               </li>
               <li aria-current="page" class="breadcrumb-item text-white active">About</li>
             </ol>
@@ -83,7 +87,7 @@
         </div>
         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
           <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-          <h1 class="mb-4">Welcome to eLEARNING</h1>
+          <h1 class="mb-4">Welcome to SkillLearn</h1>
           <p class="mb-4">Time was a fleeting moment filled with simplicity. The weight of sorrow and the essence of words lingered. Gentle moments of connection and shared emotions filled the space. There was simplicity in existence and the harmony of being together.
 
             Time was fleeting yet profound in its essence. The weight of sorrow and the essence of words remained. Gentle connections and shared simplicity united the moment, while steadfast tranquility accompanied moments of union and joy, wrapped in the beauty of shared experiences.</p>
